@@ -1,4 +1,4 @@
-#!/bim/bash
+i#!/bin/bash
 
 
 
@@ -12,6 +12,14 @@ Install_Docker(){
 	sudo apt update
 	sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 	sudo systemctl enable docker
+	sudo groupadd -f docker
+	sudo chown root:docker /var/run/docker.sock
+	sudo usermod -a -G docker "$(whoami)"
+	newgrp docker
+	sudo systemctl restart docker
+	#echo "export DOCKER_HOST=tcp://localhost:2375" >> /home/groupe1cloud/.bashrc
+	#echo "export DOCKER_HOST=unix:///var/run/docker.sock" >> /home/groupe1cloud/.bashrc
+
 }
 
 Install_Docker-compose(){
@@ -23,7 +31,14 @@ Install_Docker-compose(){
 Install_chat(){
 
 	curl -L https://raw.githubusercontent.com/RocketChat/Docker.Official.Image/master/compose.yml -O
-	docker compose up -d
+	docker-compose up
 }
 
+main(){
 
+	Install_Docker
+	Install_Docker-compose
+	Install_chat
+}
+
+main
