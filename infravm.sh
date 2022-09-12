@@ -1,19 +1,19 @@
-#§/bin/bash
+#!/bin/bash
 
 
 nomgroup=Groupe1_Brief10
-nomvnet=Groupe1-vnet
+nomvnet=Groupe1vnet
 ipvnet=192.168.1.0/24
-nomsubnet=Groupe1-subnet
+nomsubnet=Groupe1subnet
 ipsubnet=192.168.1.0/27
-nomippublic=Group1-ippub
-nomnsg=Groupe1-nsg
-nomnic=Groupe1-nic
-nomvm=Groupe1-vm
-nomadmin=Groupe1
+nomippublic=Groupe1ippub
+nomnsg=Groupe1nsg
+nomnic=Groupe1nic
+nomvm=Groupe1vm
+nomadmin=groupe1cloud
 mdpadmin=Promo20cloud
 ipvm=192.168.1.5
-nomvault=Groupe1-vault
+nomvault=groupunvault
 
 
 
@@ -37,7 +37,7 @@ Create_vm (){
 
 Create_backup (){
 
-	az backup vault create --resource-group $nomfroup -l eastus --name $nomvault
+	az backup vault create --resource-group $nomgroup --name $nomvault
 	az backup vault backup-properties --name $nomvault --resource-group $nomgroup --backup-storage-redundancy LocallyRedundant
 	az backup protection enable-for-vm --resource-group $nomgroup --vault-name $nomvault --vm $nomvm --policy-name DefaultPolicy
 }
