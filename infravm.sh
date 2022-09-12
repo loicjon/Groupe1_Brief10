@@ -37,7 +37,7 @@ Create_vm (){
 
 Create_backup (){
 
-	az backup vault create --resource-group $nomfroup -l eastus --name $nomvault
+	az backup vault create --resource-group $nomgroup -l eastus --name $nomvault
 	az backup vault backup-properties --name $nomvault --resource-group $nomgroup --backup-storage-redundancy LocallyRedundant
 	az backup protection enable-for-vm --resource-group $nomgroup --vault-name $nomvault --vm $nomvm --policy-name DefaultPolicy
 }
