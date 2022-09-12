@@ -45,7 +45,7 @@ Create_backup (){
 main (){
 
 	Create_group
-	create_network
+	Create_network
 	Create_vm
 	Create_backup
 }
