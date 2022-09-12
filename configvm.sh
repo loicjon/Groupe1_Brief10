@@ -30,7 +30,7 @@ Install_Docker-compose(){
 
 Install_chat(){
 
-	curl -L https://raw.githubusercontent.com/RocketChat/Docker.Official.Image/master/compose.yml -O
+	curl -L https://raw.githubusercontent.com/RocketChat/Docker.Official.Image/master/compose.yml /home/groupe1cloud/Groupe1_Brief10 -O
 	docker-compose up
 }
 
